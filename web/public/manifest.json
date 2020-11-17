@@ -1,0 +1,15 @@
+{
+  "short_name": "PontePilas",
+  "name": "PontePilas con la gestion de tu Gobierno GT",
+  "icons": [
+    {
+      "src": "guatemala-flag.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
