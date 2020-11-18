@@ -26,6 +26,28 @@ def parse_graph2(path_to_file='grafica2.csv', delimiter=','):
                 err_flag = False
     return err_flag
 
+def parse_graph3(path_to_file='./MAGA/3/2020.csv', delimiter=',', entity_number='1'):
+    with open(path_to_file) as file:
+        data = file.read().split('\n') # win:\n linux:\r\n
+        document = list()
+        # rows         
+        for tupla in data:
+            if tupla == '':
+                continue
+            if tupla.startswith('"'):
+                i = tupla.find('"', 1)
+                x = tupla.find(',',i)
+
+                record = list()
+                record.append(tupla[1:i])
+                record.append(tupla[x+1:])
+            else:
+                record = tupla.split(delimiter)
+            document.append({ 'detalle': record[0], 'ingreso': float(record[1]) })
+        if mycol.insert_one({ '_id' : (entity_number)*10 + 3, entities[entity_number-1] : document}) == None:
+                return True
+    return False
+
 def parse_graph4(path_to_folder='./MAGA/4/', delimiter=',', entity_number='1'):
     # 10 months of 2020 has passed through today
     for month in range(10):
@@ -92,7 +114,10 @@ while True:
             else:
                 print('MONGODB>> carga exitosa')
         elif graph_number == 3:
-            pass
+            if parse_graph3(path_to_file, delimiter, entity_number):
+                print('ERR>> la carga de datos FALLO')
+            else:
+                print('MONGODB>> carga exitosa')
         elif graph_number == 4:
             if parse_graph4(path_to_file, delimiter, entity_number):
                 print('ERR>> la carga de datos FALLO')
