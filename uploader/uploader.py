@@ -51,6 +51,28 @@ def parse_graph4(path_to_folder='./MAGA/4/', delimiter=',', entity_number='1'):
                 return True
     return False
 
+def parse_graph5(path_to_file='./MAGA/5/1.csv', delimiter=',', entity_number='1'):
+    with open(path_to_file) as file:
+        data = file.read().split('\n') # win:\n linux:\r\n
+        document = list()
+        # rows         
+        for tupla in data:
+            if tupla == '':
+                continue
+            if tupla.startswith('"'):
+                i = tupla.find('"', 1)
+                x = tupla.find(',',i)
+
+                record = list()
+                record.append(tupla[1:i])
+                record.append(tupla[x+1:])
+            else:
+                record = tupla.split(delimiter)
+            document.append({ 'proveedor': record[0], 'debito': float(record[1]) })
+        if mycol.insert_one({ '_id' : (entity_number)*10 + 5, entities[entity_number-1] : document}) == None:
+                return True
+    return False
+
 while True:
     op = int(input('        MENU\n1. Ingrese la <direccion> a los datos a cargar\n2. Ingrese el <numero> de grafica al que pertenecen\n3. Ingrese el <delimitador> con el que fueron estructurados los datos\n4. Ingrese el <correlativo> de la entidad que pertenecen\n5. Cargar datos\n Ingrese el numero de la opcion o cualquier tecla para salir\n'))
     if op == 1:
@@ -64,20 +86,23 @@ while True:
     elif op == 5:
         if graph_number == 1:
             pass
-        if graph_number == 2:
+        elif graph_number == 2:
             if parse_graph2(path_to_file, delimiter):
                 print('ERR>> la carga de datos FALLO')
             else:
                 print('MONGODB>> carga exitosa')
-        if graph_number == 3:
+        elif graph_number == 3:
             pass
-        if graph_number == 4:
+        elif graph_number == 4:
             if parse_graph4(path_to_file, delimiter, entity_number):
                 print('ERR>> la carga de datos FALLO')
             else:
                 print('MONGODB>> carga exitosa')
-        if graph_number == 5:
-            pass
+        elif graph_number == 5:
+            if parse_graph5(path_to_file, delimiter, entity_number):
+                print('ERR>> la carga de datos FALLO')
+            else:
+                print('MONGODB>> carga exitosa')
         else:
             print('ERR>> el NUMERO de grafica es incorrecto')
     else:
