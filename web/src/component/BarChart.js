@@ -7,21 +7,29 @@ class BarChart extends Component {
     super()
     this.state = {
       data: [],
-      number: []
-    }/*
-    fetch('http://URL-SERVER')
+      entity: '',
+      graph: 0,
+      isLoading: false
+    }
+  }
+
+  componentDidMount () {
+    this.setState({ isLoading: true })
+    fetch('http://0.0.0.0:8080' + this.props.entity.toUpperCase() + '/' + this.props.graph)
       .then(data => data.json())
       .then(data => {
-        console.log(data)
-        this.setState({ data: data })
-      }) */
+        this.setState({ data: data, isLoading: false })
+      })
   }
 
   render () {
+    if (this.state.isLoading) {
+      return <h3><p>Cargando ...</p></h3>
+    }
     return (
       <Card className='text-center'>
         <CardBody>
-          <CardTitle>Ministerio de Agricultura, Ganadería y Alimentación </CardTitle>
+          <CardTitle><h5><b>{this.props.entity.toUpperCase().split('/')[1]}</b></h5></CardTitle>
           <Chart
             width='auto'
             height='auto'
@@ -30,7 +38,7 @@ class BarChart extends Component {
             data={[
               [
                 'Element',
-                'Porcentaje',
+                'Asignado',
 
                 { role: 'style' },
                 {
@@ -40,12 +48,12 @@ class BarChart extends Component {
                   calc: 'stringify'
                 }
               ],
-              [2020, 1, 'color: #ABBEE6', null],
-              [2019, 2, 'color: #CBAACB', null],
-              [2018, 3, 'color: #FFFFB5', null],
-              [2017, 4, 'color: #FFCCB6', null],
-              [2016, 5, 'color: #F3B0C3', null],
-              [2015, 6, 'color: #8ED1FC', null]
+              [2020, this.state.data[0], 'color: #ABBEE6', null],
+              [2019, this.state.data[1], 'color: #CBAACB', null],
+              [2018, this.state.data[2], 'color: #FFFFB5', null],
+              [2017, this.state.data[3], 'color: #FFCCB6', null],
+              [2016, this.state.data[4], 'color: #F3B0C3', null],
+              [2015, this.state.data[5], 'color: #8ED1FC', null]
             ]}
             options={{
               width: '100%',
@@ -54,7 +62,8 @@ class BarChart extends Component {
               legend: { position: 'none' }
             }}
           />
-          <h6><i>Gráfica: PontePilas.gt datos obtenidos gracias al decreto 57-2008, Guatemala. Fuente: Diario de Centro América</i> <a href='https://drive.google.com/file/d/1Y3IHPjHXjTcAAaZkhJSy7auh3LzxQrLj/view?usp=sharing'>Descargar los datos</a></h6>
+          <h7><i>*datos expresados en millones</i></h7>
+          <h6><i>Gráfica: PontePilas.gt datos obtenidos gracias al decreto 57-2008, Guatemala. Fuente: Diario de Centro América</i> <a href='https://drive.google.com/file/d/1TxOs4Z8cOWUKDab7anLOBLhv5l1DX3Kt/view?usp=sharing'>Descargar los datos</a></h6>
         </CardBody>
       </Card>
     )
