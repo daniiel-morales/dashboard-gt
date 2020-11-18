@@ -24,7 +24,7 @@ class Ranking extends Component {
               </CardBody>
             </div>
             <div class='col-8'>
-              <BarChart />
+              
               <TableSort />
             </div>
           </div>
@@ -41,7 +41,7 @@ class Ranking extends Component {
               </CardBody>
             </div>
             <div class='col-8'>
-              <BarChart />
+              
             </div>
           </div>
         </div>

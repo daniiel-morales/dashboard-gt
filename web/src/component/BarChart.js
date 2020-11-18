@@ -62,7 +62,7 @@ class BarChart extends Component {
               legend: { position: 'none' }
             }}
           />
-          <h7><i>*datos expresados en millones</i></h7>
+          <h7><i>*datos expresados en miles</i></h7>
           <h6><i>Gráfica: PontePilas.gt datos obtenidos gracias al decreto 57-2008, Guatemala. Fuente: Diario de Centro América</i> <a href='https://drive.google.com/file/d/1TxOs4Z8cOWUKDab7anLOBLhv5l1DX3Kt/view?usp=sharing'>Descargar los datos</a></h6>
         </CardBody>
       </Card>
