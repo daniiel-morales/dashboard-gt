@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { CardBody } from 'reactstrap'
 import BarChart from './component/BarChart'
 import PieChart from './component/PieChart'
+import TreeMap from './component/TreeMap'
 
 class Ministerio extends Component {
   render () {
@@ -27,14 +28,48 @@ class Ministerio extends Component {
             <div class='col-md-auto' />
             <div class='col-3'>
 
-              <h1>  ¿Cuánto es el ingreso mensual? </h1> 
+              <h1>  ¿Cuánto es el ingreso mensual? </h1>
               <CardBody>
-                <font face='Oswald'>            Presupuesto por mes</font>
+                <font face='Oswald'>            Presupuesto del ultimo mes ingresado 2020</font>
+
+              </CardBody>
+            </div>
+            <div class='col-8'>
+              <PieChart entity={window.location.pathname} graph={4} />
+            </div>
+          </div>
+        </div>
+
+        <div className='col-11 col-md-11 m-5'>
+          <div class='row'>
+            <div class='col-md-auto' />
+            <div class='col-3'>
+
+              <h1>  ¿Cuánto es el egreso mensual? </h1>
+              <CardBody>
+                <font face='Oswald'>            Presupuesto del ultimo mes ingresado 2020</font>
 
               </CardBody>
             </div>
             <div class='col-8'>
               <PieChart entity={window.location.pathname} graph={1} />
+            </div>
+          </div>
+        </div>
+
+        <div className='col-11 col-md-11 m-5'>
+          <div class='row'>
+            <div class='col-md-auto' />
+            <div class='col-3'>
+
+              <h1>  ¿Quienes son los mayores proveedores? </h1>
+              <CardBody>
+                <font face='Oswald'>            Inversiones realizadas a los proveedores en el 2020</font>
+
+              </CardBody>
+            </div>
+            <div class='col-8'>
+              <TreeMap entity={window.location.pathname} graph={5} />
             </div>
           </div>
         </div>
