@@ -12,9 +12,9 @@ def parse_graph2(path_to_file='grafica2.csv', delimiter=','):
     err_flag = True
     with open(path_to_file) as file:
         data = file.read().split('\n') # win:\n linux:\r\n
-        document = list()
         # columns
         for entity_number in range(len(entities)):
+            document = list()
             # rows         
             for tupla in data:
                 record = tupla.split(delimiter)
