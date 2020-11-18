@@ -13,7 +13,7 @@ class Ministerio extends Component {
             <div class='col-3'>
               <h1>  ¿Cuánto de presupuesto nacional se le asignó? </h1>
               <CardBody>
-                                Presupuesto asignado de 2015 a 2020
+                <font face='Oswald'>  Presupuesto asignado de 2015 a 2020 </font>
               </CardBody>
             </div>
             <div class='col-8'>
@@ -26,9 +26,11 @@ class Ministerio extends Component {
           <div class='row'>
             <div class='col-md-auto' />
             <div class='col-3'>
-              <h1>  ¿En qué se gasta el presupuesto? </h1>
+
+              <h1>  ¿Cuánto es el ingreso mensual? </h1> 
               <CardBody>
-                                Ejecucion del presupuesto hasta la fecha
+                <font face='Oswald'>            Presupuesto por mes</font>
+
               </CardBody>
             </div>
             <div class='col-8'>
