@@ -8,6 +8,28 @@ mycol = mydb['Grafica']
 
 entities = ['MAGA', 'MCD', 'MINDEF', 'MINEDUC', 'MEM', 'MINFIN', 'MINEX', 'MSPAS', 'MINTRAB', 'USAC'] 
 
+def parse_graph1(path_to_file='./MAGA/1/1.csv', delimiter=',', entity_number='1'):
+    with open(path_to_file) as file:
+        data = file.read().split('\n') # win:\n linux:\r\n
+        document = list()
+        # rows         
+        for tupla in data:
+            if tupla == '':
+                continue
+            if tupla.startswith('"'):
+                i = tupla.find('"', 1)
+                x = tupla.find(',',i)
+
+                record = list()
+                record.append(tupla[1:i])
+                record.append(tupla[x+1:])
+            else:
+                record = tupla.split(delimiter)
+            document.append({ 'detalle': record[0], 'egreso': float(record[1]) })
+        if mycol.insert_one({ '_id' : (entity_number)*10 + 1, entities[entity_number-1] : document}) == None:
+                return True
+    return False
+
 def parse_graph2(path_to_file='grafica2.csv', delimiter=','):
     err_flag = True
     with open(path_to_file) as file:
@@ -107,7 +129,10 @@ while True:
         entity_number = int(input('4. Ingrese el <correlativo> de la entidad que pertenecen\n'))
     elif op == 5:
         if graph_number == 1:
-            pass
+            if parse_graph1(path_to_file, delimiter, entity_number):
+                print('ERR>> la carga de datos FALLO')
+            else:
+                print('MONGODB>> carga exitosa')
         elif graph_number == 2:
             if parse_graph2(path_to_file, delimiter):
                 print('ERR>> la carga de datos FALLO')
