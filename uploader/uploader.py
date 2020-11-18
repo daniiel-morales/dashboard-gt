@@ -2,7 +2,7 @@ from json import dumps as toJSON
 import pymongo
 import dns
 
-myclient = pymongo.MongoClient('MONGO-PRIVATE-URL')
+myclient = pymongo.MongoClient('mongodb+srv://admin1:admin@cluster0.k6sn1.mongodb.net/tesis?retryWrites=true&w=majority')
 mydb = myclient['Ministerio']
 mycol = mydb['Grafica']
 
@@ -11,20 +11,45 @@ entities = ['MAGA', 'MCD', 'MINDEF', 'MINEDUC', 'MEM', 'MINFIN', 'MINEX', 'MSPAS
 def parse_graph2(path_to_file='grafica2.csv', delimiter=','):
     err_flag = True
     with open(path_to_file) as file:
-        data = file.read().split("\n") # win:\n linux:\r\n
+        data = file.read().split('\n') # win:\n linux:\r\n
         document = list()
         # columns
         for entity_number in range(len(entities)):
             # rows         
             for tupla in data:
                 record = tupla.split(delimiter)
-                # skip head row win:ï»¿ano linux:\xef\xbb\xbf
+                # skip head row win:ï»¿ano linux:\xef\xbb\xbfano
                 if record[0] == 'ï»¿ano' or tupla == '':
                     continue
                 document.append({ 'ano': int(record[0]), 'asignado': int(record[entity_number+1]), 'presupuesto': int(record[11]) - int(record[12]) })
             if mycol.insert_one({ '_id' : (entity_number+1)*10 + 2, entities[entity_number] : document}) != None:
                 err_flag = False
     return err_flag
+
+def parse_graph4(path_to_folder='./MAGA/4/', delimiter=',', entity_number='1'):
+    # 10 months of 2020 has passed through today
+    for month in range(10):
+        with open(path_to_folder + str(month+1) + '.csv') as file:
+            data = file.read().split('\n') # win:\n linux:\r\n
+            document = list()
+            # rows         
+            for tupla in data:
+                if tupla.startswith('"'):
+                    i = tupla.find('"', 1)
+                    x = tupla.find(',',i)
+
+                    record = list()
+                    record.append(tupla[1:i])
+                    record.append(tupla[x+1:])
+                else:
+                    record = tupla.split(delimiter)
+                # skip head row
+                if record[0] == 'DETALLE' or tupla == '':
+                    continue
+                document.append({ 'detalle': record[0], 'ingreso': float(record[1]) })
+            if mycol.insert_one({ '_id' : str(entity_number) + '-4-' + str(month+1) , entities[entity_number-1] : document}) == None:
+                return True
+    return False
 
 while True:
     op = int(input('        MENU\n1. Ingrese la <direccion> a los datos a cargar\n2. Ingrese el <numero> de grafica al que pertenecen\n3. Ingrese el <delimitador> con el que fueron estructurados los datos\n4. Ingrese el <correlativo> de la entidad que pertenecen\n5. Cargar datos\n Ingrese el numero de la opcion o cualquier tecla para salir\n'))
@@ -40,14 +65,17 @@ while True:
         if graph_number == 1:
             pass
         if graph_number == 2:
-            if parse_graph2():
+            if parse_graph2(path_to_file, delimiter):
                 print('ERR>> la carga de datos FALLO')
             else:
                 print('MONGODB>> carga exitosa')
         if graph_number == 3:
             pass
         if graph_number == 4:
-            pass
+            if parse_graph4(path_to_file, delimiter, entity_number):
+                print('ERR>> la carga de datos FALLO')
+            else:
+                print('MONGODB>> carga exitosa')
         if graph_number == 5:
             pass
         else:
@@ -56,7 +84,8 @@ while True:
         break
 
 """
-mydoc = mycol.find({'_id' : 32})
+mydoc = mycol.delete_many({'_id' : {"$regex": "^10-4-"}})
+print(mydoc.deleted_count, " documents deleted.")
 
 for x in mydoc:
   print(x)
