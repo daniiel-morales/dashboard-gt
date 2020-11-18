@@ -7,41 +7,41 @@ class PieChart extends Component {
     super()
     this.state = {
       data: [],
-      number: []
-    }/*
-    fetch('http://URL-SERVER')
+      entity: '',
+      graph: 0,
+      isLoading: false
+    }
+  }
+
+  componentDidMount () {
+    this.setState({ isLoading: true })
+    fetch('http://0.0.0.0:8080' + this.props.entity.toUpperCase() + '/' + this.props.graph)
       .then(data => data.json())
       .then(data => {
-        console.log(data)
-        this.setState({ data: data })
-      }) */
+        this.setState({ data: data, isLoading: false })
+      })
   }
 
   render () {
+    if (this.state.isLoading) {
+      return <h3><p>Cargando ...</p></h3>
+    }
     return (
       <Card className='text-center'>
         <CardBody>
-          <CardTitle>Ministerio de Agricultura, Ganadería y Alimentación </CardTitle>
+          <CardTitle><h5><b>{this.props.entity.toUpperCase().split('/')[1]}</b></h5></CardTitle>
           <Chart
             width='auto'
             height='500px'
             chartType='PieChart'
             loader={<div>Cargando...</div>}
-            data={[
-              ['Detalle', 'Gasto'],
-              [2020, 1],
-              [2019, 2],
-              [2018, 3],
-              [2017, 4],
-              [2016, 5],
-              [2015, 6]
-            ]}
+            data={this.state.data}
             options={{
               width: '100%',
               sliceVisibilityThreshold: 0.0,
-              pieHole: 0.3,
+              pieHole: 0.2,
               slices: {
-                0: { color: '#8ED1FC', offset: 0.3 },
+                0: { color: '#8ED1FC', offset: 0.1 },
                 1: { color: '#F3B0C3' },
                 2: { color: '#FFCCB6' },
                 3: { color: '#FFFFB5' },
@@ -51,6 +51,8 @@ class PieChart extends Component {
             }}
           />
         </CardBody>
+        <h7><i>*datos expresados en miles</i></h7>
+        <h6><i>Gráfica: PontePilas.gt datos obtenidos gracias al decreto 57-2008, Guatemala. Fuente: SICOIN</i> <a href='https://drive.google.com/file/d/1TxOs4Z8cOWUKDab7anLOBLhv5l1DX3Kt/view?usp=sharing'>Descargar los datos</a></h6>
       </Card>
     )
   }
