@@ -17,7 +17,7 @@ class Ministerio extends Component {
               </CardBody>
             </div>
             <div class='col-8'>
-              <BarChart />
+              <BarChart entity={window.location.pathname} graph={2} />
             </div>
           </div>
         </div>
@@ -26,13 +26,13 @@ class Ministerio extends Component {
           <div class='row'>
             <div class='col-md-auto' />
             <div class='col-3'>
-              <h1>  ¿Cuánto es el ingreso mensual? </h1>
+              <h1>  ¿En qué se gasta el presupuesto? </h1>
               <CardBody>
-                                Presupuesto por mes
+                                Ejecucion del presupuesto hasta la fecha
               </CardBody>
             </div>
             <div class='col-8'>
-              <PieChart />
+              <PieChart entity={window.location.pathname} graph={1} />
             </div>
           </div>
         </div>
