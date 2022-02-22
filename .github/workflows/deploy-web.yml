@@ -22,14 +22,13 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Install packages
-        run: npm ci
-      - name: Build project
-        run: npm run build
-      - name: Export static files
-        run: npm run export
-      - name: Add .nojekyll file
-        run: touch ./out/.nojekyll
+      - name: Export to Static Files
+        working-directory: ./web
+        run: |
+          npm ci
+          npm run build
+          npm run export
+          touch out/.nojekyll
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.1
         with:
