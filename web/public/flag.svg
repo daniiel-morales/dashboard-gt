@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<svg
+   viewBox="0 0 210 297"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns="http://www.w3.org/2000/svg">
+  <g>
+    <rect
+       style="fill:#448abd;fill-opacity:1;stroke:#448abd;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect892"
+       width="150"
+       height="150"
+       x="25"
+       y="50"
+       ry="10" />
+    <rect
+       style="fill:#61a4d6;fill-opacity:1;stroke:#61a4d6;stroke-width:10.7348;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect3569"
+       width="125"
+       height="125"
+       x="37.867401"
+       y="62.367401"
+       ry="5" />
+    <rect
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect10871"
+       width="80"
+       height="160"
+       x="60"
+       y="45" />
+    <path
+       style="opacity:0.2;fill:none;stroke:#000000;stroke-width:12.15;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 60,50.994271 h 80.06469"
+       id="path12743" />
+    <path
+       style="opacity:0.2;fill:none;stroke:#000000;stroke-width:12.2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 59.939529,198.91131 H 140.00421"
+       id="path12743-7" />
+  </g>
+</svg>
