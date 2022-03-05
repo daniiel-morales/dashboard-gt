@@ -8,7 +8,11 @@ import {
     ranking_table,
     covid,
 } from '../components/__data__/sample-data'
-import { bar_options, table_options, covid_options } from '../components/config'
+import {
+    bar_options,
+    table_options,
+    sidebar_options,
+} from '../components/config'
 
 const Home: NextPage = () => {
     return (
@@ -39,13 +43,11 @@ const Home: NextPage = () => {
             <Card
                 title={'¿Cuanto ejecuto cada entidad de su presupuesto COVID?'}
             >
-                <>
-                    <Chart
-                        data={covid as unknown as string[]}
-                        type={chartType.sidebar}
-                        options={covid_options as unknown as string[]}
-                    />
-                </>
+                <Chart
+                    data={covid as unknown as string[]}
+                    type={chartType.sidebar}
+                    options={sidebar_options as unknown as string[]}
+                />
             </Card>
         </div>
     )

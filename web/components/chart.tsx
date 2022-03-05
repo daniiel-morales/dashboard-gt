@@ -5,6 +5,7 @@ export enum chartType {
     sidebar = 'Bar',
     table = 'Table',
     pie = 'PieChart',
+    cube = 'TreeMap',
 }
 
 type Props = {
