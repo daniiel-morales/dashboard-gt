@@ -23,7 +23,13 @@ export const ranking = [
     [top[3].entity, (top[3].value / top[0].total) * 100, 'color: #F59A8E'],
 ]
 
-export const options = {
-    bar: { groupWidth: '100%' },
-    legend: { position: 'none' },
-}
+export const ranking_table = [
+    ['', ''],
+    ...top.splice(4).map((data) => {
+        const porcentage = (data.value / top[0].total) * 100
+        return [
+            data.entity,
+            { v: porcentage, f: porcentage.toString().substring(0, 4) + ' %' },
+        ]
+    }),
+]
