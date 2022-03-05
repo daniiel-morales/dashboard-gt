@@ -23,3 +23,9 @@ export const pie_options = {
         5: { color: '#ABBEE6' },
     },
 }
+
+export const covid_options = {
+    width: '100%',
+    colors: ['#FEC97F'],
+    legend: { position: 'none' },
+}

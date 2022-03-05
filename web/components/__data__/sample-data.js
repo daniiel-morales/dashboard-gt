@@ -33,3 +33,16 @@ export const ranking_table = [
         ]
     }),
 ]
+
+export const covid = [
+    ['ENTIDAD', '% ejecutado'],
+    ['Ministerio de Desarrollo Social', 86],
+    ['Ministerio de Economía', 73],
+    ['Ministerio de Salud', 49],
+    ['Ministerio de Agricultura', 10],
+    ['Ministerio de Educación', 15],
+    ['Ministerio de Gobernación', 30],
+    ['Ministerio de Defensa', 25],
+    ['Ministerio de Comunicaciones', 1],
+    ['Ministerio de Cultura', 0.0],
+]
