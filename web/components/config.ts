@@ -1,6 +1,7 @@
 export const bar_options = {
     bar: { groupWidth: '100%' },
     legend: { position: 'none' },
+    vAxis: { gridlines: { count: 0 }, textPosition: 'none' },
 }
 
 export const table_options = {
@@ -28,4 +29,5 @@ export const covid_options = {
     width: '100%',
     colors: ['#FEC97F'],
     legend: { position: 'none' },
+    bars: 'horizontal',
 }

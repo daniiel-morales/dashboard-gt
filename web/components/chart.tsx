@@ -2,7 +2,7 @@ import { Chart as GChart } from 'react-google-charts'
 
 export enum chartType {
     bar = 'ColumnChart',
-    sidebar = 'BarChart',
+    sidebar = 'Bar',
     table = 'Table',
     pie = 'PieChart',
 }

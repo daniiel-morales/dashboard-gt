@@ -60,7 +60,7 @@ export const ranking_table = [
 ]
 
 export const covid = [
-    ['ENTIDAD', '% EJECUTADO'],
+    ['', '% EJECUTADO'],
     ['MIDES', 86],
     ['MINFIN', 73],
     ['MSPAS', 49],
