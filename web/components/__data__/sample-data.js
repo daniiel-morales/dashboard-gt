@@ -17,14 +17,39 @@ const top = data.sort((a, b) => {
 })
 
 export const ranking = [
-    ['', '% PRESUPUESTO', { role: 'style' }],
-    [top[2].entity, (top[2].value / top[0].total) * 100, 'color: #737D89'],
-    [top[1].entity, (top[1].value / top[0].total) * 100, 'color: #FEC97F'],
-    [top[3].entity, (top[3].value / top[0].total) * 100, 'color: #F59A8E'],
+    [
+        '',
+        '% PRESUPUESTO',
+        { role: 'style' },
+        {
+            sourceColumn: 0,
+            role: 'annotation',
+            type: 'string',
+            calc: 'stringify',
+        },
+    ],
+    [
+        '',
+        (top[2].value / top[0].total) * 100,
+        'color: #737D89',
+        `2. ${top[2].entity}`,
+    ],
+    [
+        '',
+        (top[1].value / top[0].total) * 100,
+        'color: #FEC97F',
+        `1. ${top[1].entity}`,
+    ],
+    [
+        '',
+        (top[3].value / top[0].total) * 100,
+        'color: #F59A8E',
+        `3. ${top[3].entity}`,
+    ],
 ]
 
 export const ranking_table = [
-    ['', ''],
+    ['', '% PRESUPUESTO'],
     ...top.splice(4).map((data) => {
         const porcentage = (data.value / top[0].total) * 100
         return [
