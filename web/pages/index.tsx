@@ -37,14 +37,12 @@ const Home: NextPage = () => {
                 </>
             </Card>
             <Card
-                title={
-                    '¿En qué afectó el COVID a la economía de estas instituciones?'
-                }
+                title={'¿Cuanto ejecuto cada entidad de su presupuesto COVID?'}
             >
                 <>
                     <Chart
                         data={covid as unknown as string[]}
-                        type={chartType.bar}
+                        type={chartType.sidebar}
                         options={covid_options as unknown as string[]}
                     />
                 </>
