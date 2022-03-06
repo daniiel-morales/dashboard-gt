@@ -3,7 +3,7 @@ import entity_list from './__data__/entity-list'
 import styles from './navbar.module.css'
 
 const entities = entity_list.map((entity) => (
-    <Link href={`/${entity[2].toString().toLowerCase()}`}>
+    <Link key={entity[0]} href={`/${entity[2].toString().toLowerCase()}`}>
         <a className={styles.aclass}>{entity[2]}</a>
     </Link>
 ))
