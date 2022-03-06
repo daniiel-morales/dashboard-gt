@@ -12,7 +12,7 @@ export const Box = styled.div`
 export const Details = styled.div`
     width: inherit;
     padding: 0 0.5rem 1rem 0.5rem;
-    display: grid;
+    display: box;
     justify-content: center;
 `
 

@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 
+import NavBar from '../components/navbar'
 import Card from '../components/card'
 import Chart, { chartType } from '../components/chart'
 import {
@@ -17,6 +18,7 @@ import {
 const Home: NextPage = () => {
     return (
         <div>
+            <NavBar />
             <Head>
                 <title>Ponte Pilas GT</title>
                 <meta name='description' content='Guatemalan Entity Graphs' />
@@ -25,7 +27,7 @@ const Home: NextPage = () => {
                     href={`${process.env.BACKEND_URL}/favicon.png`}
                 />
             </Head>
-            <Card title={'¿A que entidad se le asigna mas presupuesto? '}>
+            <Card title={'¿A quién se asigna mas presupuesto? '}>
                 <>
                     <Chart
                         data={ranking as unknown as string[]}
@@ -40,9 +42,7 @@ const Home: NextPage = () => {
                     />
                 </>
             </Card>
-            <Card
-                title={'¿Cuanto ejecuto cada entidad de su presupuesto COVID?'}
-            >
+            <Card title={'¿Como ejecutó su presupuesto COVID?'}>
                 <Chart
                     data={covid as unknown as string[]}
                     type={chartType.sidebar}

@@ -1,0 +1,85 @@
+.navbar {
+    overflow: hidden;
+    background-color: skyblue;
+}
+
+.aclass {
+    float: left;
+    font-size: 1rem;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    padding: 1rem 1rem;
+    text-decoration: none;
+}
+
+.subnav {
+    float: left;
+    overflow: hidden;
+}
+
+.subnav .subnavbtn {
+    width: 100%;
+    font-size: 1rem;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 1rem 1rem;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+.subnavcontent {
+    display: none;
+    position: relative;
+    margin-top: 2rem;
+    background-color: skyblue;
+    width: 100%;
+}
+
+.subnavcontent .aclass {
+    float: left;
+    color: white;
+    text-decoration: none;
+}
+
+.subnavcontent .aclass:hover {
+    background-color: white;
+    color: skyblue;
+}
+
+@media only screen and (min-width: 1450px) {
+    .navbar .aclass:hover .subnav:hover .subnavbtn {
+        background-color: white;
+        color: skyblue;
+    }
+}
+
+@media only screen and (max-width: 1450px) {
+    .subnav:hover .subnavcontent {
+        display: grid;
+    }
+}
+.menu {
+    display: none;
+}
+
+@media only screen and (max-width: 1450px) {
+    .menu {
+        display: initial;
+        width: 100%;
+        font-size: 1rem;
+        border: none;
+        outline: none;
+        color: white;
+        padding: 1rem 1rem;
+        background-color: inherit;
+        font-family: inherit;
+        margin: 0;
+    }
+
+    .full {
+        display: none;
+    }
+}
