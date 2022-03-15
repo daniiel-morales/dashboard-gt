@@ -27,7 +27,7 @@ const Home: NextPage = () => {
                     href={`${process.env.BACKEND_URL}/favicon.png`}
                 />
             </Head>
-            <Card title={'¿A quién se asigna mas presupuesto? '}>
+            <Card title={'¿A quién se asigna más presupuesto? '}>
                 <>
                     <Chart
                         data={ranking as unknown as string[]}

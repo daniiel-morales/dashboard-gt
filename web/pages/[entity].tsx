@@ -70,7 +70,7 @@ const Entity: NextPage = () => {
         //(entity as string) in Entities ? (
         <>
             <NavBar />
-            <Card title={'¿Se le asigno mas Presupuesto?'}>
+            <Card title={'¿Se le asigno más Presupuesto?'}>
                 <Chart
                     data={getAssigned(data_from) as unknown as string[]}
                     type={chartType.sidebar}
@@ -84,7 +84,7 @@ const Entity: NextPage = () => {
                     options={pie_options as unknown as string[]}
                 />
             </Card>
-            <Card title={'¿Que importa mas para la entidad?'}>
+            <Card title={'¿Que importa más para la entidad?'}>
                 <Chart
                     data={needs as unknown as string[]}
                     type={chartType.cube}
