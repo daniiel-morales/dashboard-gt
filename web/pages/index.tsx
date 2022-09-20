@@ -14,42 +14,48 @@ import {
     table_options,
     sidebar_options,
 } from '../components/config'
+import { InLine, Layout } from '../components/styles'
 
 const Home: NextPage = () => {
     return (
-        <div>
+        <>
             <NavBar />
-            <Head>
-                <title>Ponte Pilas GT</title>
-                <meta name='description' content='Guatemalan Entity Graphs' />
-                <link
-                    rel='icon'
-                    href={`${process.env.BACKEND_URL}/favicon.png`}
-                />
-            </Head>
-            <Card title={'¿A quién se asigna más presupuesto? '}>
-                <>
-                    <Chart
-                        data={ranking as unknown as string[]}
-                        type={chartType.bar}
-                        options={bar_options as unknown as string[]}
+            <Layout>
+                <Head>
+                    <title>Ponte Pilas GT</title>
+                    <meta
+                        name='description'
+                        content='Guatemalan Entity Graphs'
                     />
-                    <Chart
-                        width='95%'
-                        data={ranking_table as unknown as string[]}
-                        type={chartType.table}
-                        options={table_options as unknown as string[]}
+                    <link
+                        rel='icon'
+                        href={`${process.env.BACKEND_URL}/favicon.png`}
                     />
-                </>
-            </Card>
-            <Card title={'¿Como ejecutó su presupuesto COVID?'}>
-                <Chart
-                    data={covid as unknown as string[]}
-                    type={chartType.sidebar}
-                    options={sidebar_options as unknown as string[]}
-                />
-            </Card>
-        </div>
+                </Head>
+                <Card title={'¿A quién se asigna más presupuesto? '}>
+                    <InLine>
+                        <Chart
+                            data={ranking as unknown as string[]}
+                            type={chartType.bar}
+                            options={bar_options as unknown as string[]}
+                        />
+                        <Chart
+                            width='95%'
+                            data={ranking_table as unknown as string[]}
+                            type={chartType.table}
+                            options={table_options as unknown as string[]}
+                        />
+                    </InLine>
+                </Card>
+                <Card title={'¿Como ejecutó su presupuesto COVID?'}>
+                    <Chart
+                        data={covid as unknown as string[]}
+                        type={chartType.sidebar}
+                        options={sidebar_options as unknown as string[]}
+                    />
+                </Card>
+            </Layout>
+        </>
     )
 }
 

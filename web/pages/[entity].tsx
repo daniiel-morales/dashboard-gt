@@ -13,6 +13,7 @@ import {
     cube_options,
     pie_options,
 } from '../components/config'
+import { Layout } from '../components/styles'
 
 const Entities = {
     maga: 1,
@@ -70,27 +71,29 @@ const Entity: NextPage = () => {
         //(entity as string) in Entities ? (
         <>
             <NavBar />
-            <Card title={'¿Se le asigno más Presupuesto?'}>
-                <Chart
-                    data={getAssigned(data_from) as unknown as string[]}
-                    type={chartType.sidebar}
-                    options={bar_options as unknown as string[]}
-                />
-            </Card>
-            <Card title={'¿En que ejecutan sus ingresos?'}>
-                <Chart
-                    data={expenses as unknown as string[]}
-                    type={chartType.pie}
-                    options={pie_options as unknown as string[]}
-                />
-            </Card>
-            <Card title={'¿Que importa más para la entidad?'}>
-                <Chart
-                    data={needs as unknown as string[]}
-                    type={chartType.cube}
-                    options={cube_options as unknown as string[]}
-                />
-            </Card>
+            <Layout>
+                <Card title={'¿Se le asigno más Presupuesto?'}>
+                    <Chart
+                        data={getAssigned(data_from) as unknown as string[]}
+                        type={chartType.sidebar}
+                        options={bar_options as unknown as string[]}
+                    />
+                </Card>
+                <Card title={'¿En que ejecutan sus ingresos?'}>
+                    <Chart
+                        data={expenses as unknown as string[]}
+                        type={chartType.pie}
+                        options={pie_options as unknown as string[]}
+                    />
+                </Card>
+                <Card title={'¿Que importa más para la entidad?'}>
+                    <Chart
+                        data={needs as unknown as string[]}
+                        type={chartType.cube}
+                        options={cube_options as unknown as string[]}
+                    />
+                </Card>
+            </Layout>
         </>
     )
     //   : (  <p>ERROR</p>
